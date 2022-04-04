@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Currency Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="title">CURRENCY CONVERTER</div>
+            <form action="" method="post">
+                {% if request_type=='clean_input' %}
+                <div class="row">
+                    <input type="text" name="currency_from" placeholder="Enter amount" required="">
+                    <select name="currency_from_select" id="selector">
+                        <option value="TRY">Turkish Lira</option>
+                        <option value="GBP">Great Britain Pound</option>
+                        <option value="USD">United States Dollar</option>
+                        <option value="EUR">Euro</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="text" name="currency_to">
+                    <select name="currency_to_select" id="selector">
+                        <option value="TRY">Turkish Lira</option>
+                        <option value="GBP">Great Britain Pound</option>
+                        <option value="USD">United States Dollar</option>
+                        <option value="EUR">Euro</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <button type="submit" name="convert_btn" value="convert">Convert</button>
+                </div>
+                {% else %}
+                <div class="row">
+                    <input type="text" name="currency_from" placeholder="Enter amount" required="" value="{{ currency_to_amount }}">
+                    <select name="currency_from_select" id="selector">
+                        <option value="TRY">Turkish Lira</option>
+                        <option value="GBP">Great Britain Pound</option>
+                        <option value="USD">United States Dollar</option>
+                        <option value="EUR">Euro</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <input type="text" name="currency_to" value="{{ calculated_amount }}">
+                    <select name="currency_to_select" id="selector">
+                        <option value="TRY">Turkish Lira</option>
+                        <option value="GBP">Great Britain Pound</option>
+                        <option value="USD">United States Dollar</option>
+                        <option value="EUR">Euro</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <button type="submit" name="convert_btn" value="convert">Convert</button>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
